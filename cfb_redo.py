@@ -5,14 +5,13 @@ import requests
 # from requests_ntlm import HttpNtlmAuth
 # from requests.auth import HTTPBasicAuth
 import numpy as np
-# import t
 import urllib3
 urllib3.disable_warnings()
 
 games = 'https://api.collegefootballdata.com/games?year=2019&seasonType=regular'
 teams = 'https://api.collegefootballdata.com/teams/fbs?year=2019'
 
-data = requests.get(games, verify=False)
+data = requests.get(games, verify=False)	#Prevents SSL error at work
 team_info = requests.get(teams, verify=False)
 
 class Static:
