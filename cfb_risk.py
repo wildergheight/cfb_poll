@@ -29,7 +29,7 @@ class Stats:
 		self.territory = 0
 		self.player = 0
 		self.stars = 0
-	
+
 
 datData = {}		#Overall Dictionary
 
@@ -52,7 +52,7 @@ for todo_item in team_info.json():
 	x.star = star
 
 	datData[teamname] = x
-	
+
 
 
 print('current turn is ' + str(current_turn))
