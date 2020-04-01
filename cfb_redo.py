@@ -19,6 +19,9 @@ team_info = requests.get(teams, verify=False)
 
 
 class Static:
+    def __init__(self):
+        pass
+
     margin_of_victory = 17  # MOV cap, teams will not be rewarded past this score
     P5_bonus = 1.5  # Bonus for beating a P5 team
     G5_penalty = 1.5  # Penalty for losing to a G5 team
