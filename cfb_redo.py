@@ -1,6 +1,6 @@
 # CFB Poll Redo
 # Dylan Klein
-# 3/11/20
+# 9/12/21
 
 import requests
 # from requests_ntlm import HttpNtlmAuth
@@ -11,11 +11,13 @@ import urllib3
 
 urllib3.disable_warnings()
 
-games = 'https://api.collegefootballdata.com/games?year=2019&seasonType=regular'
-teams = 'https://api.collegefootballdata.com/teams/fbs?year=2019'
+my_headers = {'Authorization' : 'Bearer ##################################'}
 
-data = requests.get(games, verify=False)
-team_info = requests.get(teams, verify=False)
+games = 'https://api.collegefootballdata.com/games?year=2021&seasonType=regular'
+teams = 'https://api.collegefootballdata.com/teams/fbs?year=2021'
+
+data = requests.get(games, verify=False, headers=my_headers)
+team_info = requests.get(teams, verify=False, headers=my_headers)
 
 
 class Static:
@@ -42,9 +44,9 @@ class Stats:
 
 datData = {}  # Overall Dictionary
 
-if team_info.status_code != 200:
-    # This means something went wrong.
-    raise ApiError('GET /tasks/ {}'.format(team_info.status_code))
+# if team_info.status_code != 200:
+#     # This means something went wrong.
+#     raise ApiError('GET /tasks/ {}'.format(team_info.status_code))
 for todo_item in team_info.json():
     teamname = todo_item['school']
     # print(teamname)
@@ -58,9 +60,9 @@ for todo_item in team_info.json():
 home_points = 0
 away_points = 0
 
-if data.status_code != 200:
-    # This means something went wrong.
-    raise ApiError('GET /tasks/ {}'.format(data.status_code))
+# if data.status_code != 200:
+#     # This means something went wrong.
+#     raise ApiError('GET /tasks/ {}'.format(data.status_code))
 for todo_item in data.json():
     try:
         home_points = todo_item['home_points']
